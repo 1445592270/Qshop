@@ -18,29 +18,36 @@
 		<div class="right_content clearfix">
 				<h3 class="common_title2">收货地址</h3>
 				<div class="site_con">
-					<dl>
-						<dt>当前地址：</dt>
-						<dd>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 182****7528</dd>
-					</dl>
+{#					<dl>#}
+{#						<dt>当前地址：</dt>#}
+{#						<dd>北京市 海淀区 东北旺西路8号中关村软件园 （李思 收） 182****7528</dd>#}
+{#					</dl>#}
+                <dl>
+                    <dt>当前地址</dt>
+                </dl>
+                    {% for i in address %}
+                    <input type="checkbox" name="address" class="item1">地址:{{ i.user_address }},收件人:{{ i.user_name }},电话:{{ i.user_phone }}
+                    {% endfor %}
 				</div>
 				<h3 class="common_title2">编辑地址</h3>
 				<div class="site_con">
-					<form>
+					<form method="post">
+                        {% csrf_token %}
 						<div class="form_group">
 							<label>收件人：</label>
-							<input type="text" name="">
+							<input type="text" name="user_name">
 						</div>
 						<div class="form_group form_group2">
 							<label>详细地址：</label>
-							<textarea class="site_area"></textarea>
+							<textarea class="site_area" name="user_address"></textarea>
 						</div>
 						<div class="form_group">
 							<label>邮编：</label>
-							<input type="text" name="">
+							<input type="text" name="user_post">
 						</div>
 						<div class="form_group">
 							<label>手机：</label>
-							<input type="text" name="">
+							<input type="text" name="user_phone">
 						</div>
 
 						<input type="submit" name="" value="提交" class="info_submit">
@@ -50,4 +57,12 @@
 	</div>
 {% endblock %}
 
-
+{% block script %}
+    <script>
+        $('.item1').click(
+            function () {
+                alert(1111)
+            }
+        )
+    </script>
+{% endblock %}
