@@ -7,3 +7,5 @@
     pip install python-alipay-sdk
     pip install Pillow
 最后再次使用python manage.py runserver就能够启动该项目了。
+buyer 为买家平台
+saller是卖家后台管理平台
