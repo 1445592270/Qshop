@@ -5,7 +5,7 @@ from Saller.views import *
 urlpatterns = [
     path('register/',register),
     path('login/',login),
-    path('login1/',login1),
+    # path('login1/',login1),
     path('index/',index),
     path('logout/',logout),
     path('goods_list/',goods_list),

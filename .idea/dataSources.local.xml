@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="db" uuid="6c1b9331-f022-43e8-9ce4-2b0c38f7897b">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+      <introspection-schemas>*:@</introspection-schemas>
+    </data-source>
+    <data-source name="db2" uuid="658ce36b-de67-4896-ad7d-95853208038c">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="DB2" exact-version="0" />
+    </data-source>
+    <data-source name="Django default" uuid="39787f97-7f13-4a0e-b934-583c0b536ff7">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="SQLITE" exact-version="0" />
+    </data-source>
+    <data-source name="Django slave" uuid="c62228f0-9afd-4867-bc26-bbb51541a454">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="DB2" exact-version="0" />
+    </data-source>
+  </component>
+</project>
