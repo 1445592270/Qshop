@@ -155,7 +155,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=(
     os.path.join(BASE_DIR,'static'),
 )
-
+#收集静态文件时打开STATIC_ROOT 关闭STATICFILES_DIRS，收集完后相反操作，收集时使用python manage.py collectstatic
 # STATIC_ROOT=os.path.join(BASE_DIR,'static')
 
 MEDIA_URL='/media/'
