@@ -82,7 +82,7 @@ def loginn(request):
                 error_msg = "用户不存在"
         else:
             error_msg = "邮箱不可以为空"
-    return render(request,'buyer/login.html')
+    return render(request,'buyer/login.html',locals())
 def registerr(request):
     if request.method=='POST':
         error=''
@@ -250,26 +250,33 @@ def add_cart(request):
 def place_order(request):
     ## 保存订单
     goods_id = request.GET.get("goods_id")  # 商品id
+    print('goods_id',goods_id)
     goods_count = request.GET.get("goods_count")  ## 订单数量
+    print('goods_count',goods_count)
     user_id = request.COOKIES.get("userid")
     if goods_id and goods_count:
         goods_id = int(goods_id)
         goods_count = int(goods_count)
         goods = Goods.objects.get(id=goods_id)
+        print(goods.goods_price)
         ## 保存订单表
         payorder = PayOrder()
         order_number = str(time.time()).replace('.', '')  ## 生产订单编号
         payorder.order_number = order_number  ## 订单编号
         payorder.order_status = 0
         payorder.order_total = goods.goods_price * goods_count
+        print(payorder.order_total)
         payorder.order_user = LoginUserr.objects.get(id=user_id)
         payorder.save()
         ## 保存订单详情表
         orderinfo = OrderInfo()
         orderinfo.order_id = payorder
+        print('orderinfo.order_id',orderinfo.order_id)
         orderinfo.goods = goods
         orderinfo.goods_count = goods_count
+        orderinfo.goods_price = goods.goods_price
         orderinfo.goods_total_price = goods.goods_price * goods_count
+        print('orderinfo.goods_total_price',orderinfo.goods_total_price)
         orderinfo.store_id = goods.goods_store
         orderinfo.save()
 
@@ -299,16 +306,21 @@ def place_order_more(request):
     #     print(i)
 
     userid=request.COOKIES.get('userid')
+    print('userid',userid)
     data_item=data.items()
+    # print(data_item)
     req_data=[]
     for key,val in data_item:
         if key.startswith('goods'):
+            # print('key****',key,'val****',val)
+            # print('all*******',key.startswith('count_'))
             goods_id=key.split('_')[1]
-            count=request.GET.get('count_'+goods_id)
+            count=data.get('count_'+goods_id)
+            # print('count',count)
             cart_id=key.split('_')[2]
             # print('%s++++++%s'%(goods_id,count))
             req_data.append((int(goods_id),int(count),int(cart_id)))
-    # print(req_data)
+    # print('req_data',req_data)
     if req_data:
         payorder = PayOrder()
         order_number = str(time.time()).replace('.', '')  ## 生产订单编号

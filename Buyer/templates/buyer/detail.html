@@ -104,6 +104,7 @@
     $('#buynow').click(
         function () {
             url='/Buyer/place_order/?goods_id='+{{ goods.id }}+"&goods_count="+$('#number').val();
+            console.log(url);
             window.location.href=url;
         }
     );

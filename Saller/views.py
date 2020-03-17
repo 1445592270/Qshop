@@ -379,6 +379,12 @@ def seller_caozuo(request):
             jujue
                 修改订单详情状态
             fahuo
+            http://127.0.0.1:8000/Buyer/place_order_more/?count_11=1&goods_2_5=on&count_2=1
+            http://127.0.0.1:8000/Buyer/place_order/?goods_id=11&goods_count=1
+
+            http://127.0.0.1:8000/Buyer/place_order_more/?goods_2_8=on&count_2=2&count_2=1&count_11=1&count_2=1
+            http://127.0.0.1:8000/Buyer/place_order_more/?count_2=2&goods_2_7=on&count_2=1&count_11=1&count_2=1
+            http://127.0.0.1:8000/Buyer/place_order/?goods_id=2&goods_count=1
     :return:
     """
     type = request.GET.get("type")
