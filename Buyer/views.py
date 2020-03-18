@@ -169,6 +169,16 @@ def user_center_site(request):
     result={'code':100000,'content':''}
     address=UserAddress.objects.all()
     user_email=request.COOKIES.get('email')
+    address1 = UserAddress.objects.all()
+    print('address1*********', address1)
+    user_name = ''
+    user_phone = ''
+    user_address = ''
+    for i in address1:
+        # print('address.user_name', i.user_name)
+        user_name = i.user_name
+        user_phone = i.user_phone
+        user_address = i.user_address
     if request.method=='POST':
         loginuser=LoginUserr.objects.filter(email=user_email).first()
         if loginuser:
@@ -246,6 +256,7 @@ def add_cart(request):
         result['content'] = '请求方式不正确'
     return JsonResponse(result)
 
+
 @LoginVaild
 def place_order(request):
     ## 保存订单
@@ -254,6 +265,15 @@ def place_order(request):
     goods_count = request.GET.get("goods_count")  ## 订单数量
     print('goods_count',goods_count)
     user_id = request.COOKIES.get("userid")
+    address=UserAddress.objects.all()
+    user_name=''
+    user_phone=''
+    user_address=''
+    for i in address:
+        # print('address.user_name', i.user_name)
+        user_name=i.user_name
+        user_phone=i.user_phone
+        user_address=i.user_address
     if goods_id and goods_count:
         goods_id = int(goods_id)
         goods_count = int(goods_count)
@@ -302,8 +322,8 @@ def place_order_more(request):
         &count_2=1
         """
     data=request.GET
-    # for i in data:
-    #     print(i)
+    for i in data:
+        print('iiiiii',i)
 
     userid=request.COOKIES.get('userid')
     print('userid',userid)

@@ -25,11 +25,11 @@
                 <dl>
                     <dt>当前地址</dt>
                 </dl>
-                    {% for i in address %}
-                    <input type="checkbox" name="address" class="item1">地址:{{ i.user_address }},收件人:{{ i.user_name }},电话:{{ i.user_phone }}
-                    {% endfor %}
+{#                    {% for i in address %}#}
+                    <div><input type="checkbox" name="address" class="item1" checked>地址:{{ user_address }},收件人:{{ user_name }},电话:{{ user_phone }}</div>
+{#                    {% endfor %}#}
 				</div>
-				<h3 class="common_title2">编辑地址</h3>
+				<h3 class="common_title2" >编辑地址</h3>
 				<div class="site_con">
 					<form method="post">
                         {% csrf_token %}
