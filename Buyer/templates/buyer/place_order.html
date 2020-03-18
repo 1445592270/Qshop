@@ -40,9 +40,10 @@
 			<li class="col04">数量</li>
 			<li class="col05">小计</li>
 		</ul>
+
     {% for i in payorder.orderinfo_set.all %}
 		<ul class="goods_list_td clearfix">
-			<li class="col01">1</li>
+			<li class="col01">::</li>
 			<li class="col02"><img src="/static/{{ i.goods.picture }}"></li>
 			<li class="col03">{{ i.goods.goods_name }}</li>
 			<li class="col04">500g</li>
@@ -50,6 +51,7 @@
 			<li class="col06">{{ i.goods_count }}</li>
 			<li class="col07">{{ i.goods_total_price }}元</li>
 		</ul>
+        <p>{{ i.id }}</p>
     {% endfor %}
 
 	</div>

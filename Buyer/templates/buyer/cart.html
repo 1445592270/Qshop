@@ -15,7 +15,7 @@
     <form action="/Buyer/place_order_more/">
     {%for cart_one in cart_list %}
 	<ul class="cart_list_td clearfix">
-		<li class="col01"><input class="goods_check" type="checkbox" name="goods_{{ cart_one.goods.id }}_{{ cart_one.id }}" ></li>
+		<li class="col01"><input class="goods_check" type="checkbox" name="goods_{{ cart_one.goods.id }}_{{ cart_one.id }}_{{ cart_one.goods_number }}" ></li>
 		<li class="col02"><img src="/static/{{ cart_one.goods.picture }}"></li>
 		<li class="col03">{{ cart_one.goods.goods_name }}<br><em>{{ cart_one.goods_price }}元/500g</em></li>
 		<li class="col04">500g</li>
@@ -79,7 +79,8 @@
 {#                    console.log(total)#}
                     dic.num+=num;
                     dic.total+=total;
-{#                    console.log(dic.num)#}
+                    {#alert(dic.num)#}
+                    {#console.log(dic.num)#}
 {#                    console.log(dic.total)#}
 
                 }

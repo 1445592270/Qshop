@@ -154,11 +154,17 @@ def cart(request):
     count = cart.count()  # 获取条数
     for i in cart:
         if i.order_number!='0':
-            payorder=PayOrder.objects.get(order_number=i.order_number)
-            if payorder.order_status!=1:
-                cart_list.append(i)
-            else:
-                count-=1
+            try:
+                payorder=PayOrder.objects.get(order_number=i.order_number)
+                if payorder:
+                    if payorder.order_status!=1:
+                        cart_list.append(i)
+                    else:
+                        count-=1
+                else:
+                    pass
+            except Exception as e:
+                print(e)
         else:
             cart_list.append(i)
 
@@ -256,24 +262,24 @@ def add_cart(request):
         result['content'] = '请求方式不正确'
     return JsonResponse(result)
 
-
+#在(detail)详情页面直接购买商品处理方法
 @LoginVaild
 def place_order(request):
-    ## 保存订单
-    goods_id = request.GET.get("goods_id")  # 商品id
-    print('goods_id',goods_id)
-    goods_count = request.GET.get("goods_count")  ## 订单数量
-    print('goods_count',goods_count)
-    user_id = request.COOKIES.get("userid")
-    address=UserAddress.objects.all()
-    user_name=''
-    user_phone=''
-    user_address=''
+    #地址处理
+    address = UserAddress.objects.all()
+    user_name = ''
+    user_phone = ''
+    user_address = ''
     for i in address:
-        # print('address.user_name', i.user_name)
-        user_name=i.user_name
-        user_phone=i.user_phone
-        user_address=i.user_address
+        user_name = i.user_name
+        user_phone = i.user_phone
+        user_address = i.user_address
+    ## 保存订单
+    goods_id = request.GET.get('goods_id')  # 商品id
+    print('goods_id*****',goods_id)
+    goods_count = request.GET.get('goods_count')  ## 订单数量
+    print('goods_count***',goods_count)
+    user_id = request.COOKIES.get("userid")
     if goods_id and goods_count:
         goods_id = int(goods_id)
         goods_count = int(goods_count)
@@ -305,37 +311,30 @@ def place_order(request):
         for i in all_goods_info:
             total_count+=i.goods_count
     return render(request,'buyer/place_order.html',locals())
-
+#在(cart)购物车界面跳转支付时处理的方法
 @LoginVaild
 def place_order_more(request):
-    """
-        获取不到id相同的商品
-        goods_1=on
-        &goods_3=on
-        &goods_2=on
-        &goods_3=on
-        &goods_2=on
-        &count_1=1
-        &count_3=1
-        &count_3=1
-        &count_2=5
-        &count_2=1
-        """
     data=request.GET
-    for i in data:
-        print('iiiiii',i)
-
+    address = UserAddress.objects.all()
+    user_name = ''
+    user_phone = ''
+    user_address = ''
+    for i in address:
+        user_name = i.user_name
+        user_phone = i.user_phone
+        user_address = i.user_address
     userid=request.COOKIES.get('userid')
     print('userid',userid)
     data_item=data.items()
-    # print(data_item)
     req_data=[]
     for key,val in data_item:
+        print(key,'************************',val)
         if key.startswith('goods'):
             # print('key****',key,'val****',val)
             # print('all*******',key.startswith('count_'))
             goods_id=key.split('_')[1]
-            count=data.get('count_'+goods_id)
+            # count=data.get('count_'+goods_id)
+            count = key.split('_')[3]
             # print('count',count)
             cart_id=key.split('_')[2]
             # print('%s++++++%s'%(goods_id,count))

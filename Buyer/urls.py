@@ -21,7 +21,6 @@ path('payresult/',payresult),
 path('add_cart/',add_cart),
 path('place_order_more/',place_order_more),
 path('reqtest/',reqtest),
-# path('address/',address),
 path('myprocess_tem_rep/',myprocess_tem_rep),
 re_path('detail/(?P<id>\d+)',detail),
 
