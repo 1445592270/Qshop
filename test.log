@@ -1,0 +1,5 @@
+2020-03-18 18:03:37【DEBUG】this level is debug 
+2020-03-18 18:03:37【INFO】this level is info 
+2020-03-18 18:03:37【WARNING】this level is warning 
+2020-03-18 18:03:37【ERROR】this level is error 
+2020-03-18 18:03:37【CRITICAL】this level is critical 

@@ -1,0 +1,53 @@
+Watching for file changes with StatReloader
+---------%s is login----
+---------%s is login----
+"GET /Buyer/indexx/ HTTP/1.1" 200 7211
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/images/5a7178aab06b.jpg HTTP/1.1" 404 1695
+"GET /Buyer/detail/1 HTTP/1.1" 200 7340
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"POST /Buyer/add_cart/ HTTP/1.1" 200 67
+"GET /Buyer/cart/ HTTP/1.1" 200 6995
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /Buyer/place_order_more/?goods_1_13_1=on&count_1=1&goods_1_12_1=on&count_1=1&goods_2_11_1=on&count_2=1 HTTP/1.1" 200 5571
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+---------%s is login----
+---------%s is login----
+"GET /Buyer/indexx/ HTTP/1.1" 200 7211
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/images/5a7178aab06b.jpg HTTP/1.1" 404 1695
+"GET /Buyer/detail/10 HTTP/1.1" 200 7342
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /Buyer/place_order/?goods_id=10&goods_count=1 HTTP/1.1" 200 4917
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /Buyer/user_center_order/ HTTP/1.1" 200 12207
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /Buyer/user_center_info/ HTTP/1.1" 200 5558
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /Buyer/user_center_order/ HTTP/1.1" 200 12207
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /Buyer/user_center_site/ HTTP/1.1" 200 4802
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+C:\Users\moxia\Desktop\des\Qshop1\Qshop\Qshop\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\moxia\Desktop\des\Qshop1\Qshop\Qshop\settings.py changed, reloading.
+Watching for file changes with StatReloader
+---------%s is login----
+---------%s is login----
+"GET /Buyer/indexx/ HTTP/1.1" 200 7211
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/images/5a7178aab06b.jpg HTTP/1.1" 404 1695
+"GET /Buyer/detail/12 HTTP/1.1" 200 7342
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /Buyer/place_order/?goods_id=12&goods_count=1 HTTP/1.1" 200 4917
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+"GET /static/buyer/js/slideshow.js HTTP/1.1" 404 1689
+C:\Users\moxia\Desktop\des\Qshop1\Qshop\Qshop\settings.py changed, reloading.
+Watching for file changes with StatReloader
+C:\Users\moxia\Desktop\des\Qshop1\Qshop\Buyer\views.py changed, reloading.
+Watching for file changes with StatReloader

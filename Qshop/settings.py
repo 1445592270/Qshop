@@ -84,31 +84,73 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     },
-#     'slave': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db2.sqlite3'),
-# }
+    'slave': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db2.sqlite3'),
+}
 }
 
-####logging日志的配置
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'handlers': {
-#         'file': {
-#             'level': 'DEBUG',
-#             'class': 'logging.FileHandler',
-#             'filename': os.path.join(BASE_DIR,'debug.log'),
-#         },
+# DATABASES = {
+#     'default': {
+#         'NAME': 'app_data',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'USER': 'postgres_user',
+#         'PASSWORD': 's3krit'
 #     },
-#     'loggers': {
-#         'django': {
-#             'handlers': ['file'],
-#             'level': 'DEBUG',
-#             'propagate': True,
-#         },
-#     },
+#     'users': {
+#         'NAME': 'user_data',
+#         'ENGINE': 'django.db.backends.mysql',
+#         'USER': 'mysql_user',
+#         'PASSWORD': 'priv4te'
+#     }
 # }
+#没有default时，使用
+# $ ./manage.py migrate
+# $ ./manage.py migrate --database=users
+
+
+#使用mysql作为数据库，迁移时
+# $ ./manage.py migrate --database=users
+# $ ./manage.py migrate --database=customers
+# DATABASES = {
+#     'default': {},这里有default时需要指定数据库名
+#     'users': {
+#         'NAME': 'user_data',
+#         'ENGINE': 'django.db.backends.mysql',
+#         'USER': 'mysql_user',
+#         'PASSWORD': 'superS3cret'
+#     },
+#     'customers': {
+#         'NAME': 'customer_data',
+#         'ENGINE': 'django.db.backends.mysql',
+#         'USER': 'mysql_cust',
+#         'PASSWORD': 'veryPriv@ate'
+#     }
+# }
+import time
+####logging日志的配置
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            # 'level': 'DEBUG',
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            # 'filename': os.path.join(BASE_DIR,'debug.log'),
+            'filename': os.path.join(BASE_DIR,'info.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'format': time.time(),
+            # 'level': 'DEBUG',
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
 
 
 

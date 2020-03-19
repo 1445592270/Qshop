@@ -12,6 +12,7 @@ from Qshop.settings import alipay_public_key_string,alipay_private_key_string
 # Create your views here.
 from django.views.decorators.cache import cache_page
 import logging
+
 collect=logging.getLogger('django')
 ## 密码加密
 def setPassword(password):
@@ -28,10 +29,10 @@ def LoginVaild(func):
         email = request.COOKIES.get('email')
         ## 获取session
         session_email = request.session.get("email")
-        print(email)
+        # print(email)
         if email and session_email and email == session_email:
             user_email=LoginUserr.objects.filter(email=email).exists()
-            print(user_email)
+            # print(user_email)
             if user_email:
                 return func(request,*args,**kwargs)
             else:
@@ -60,7 +61,7 @@ def loginn(request):
         password = request.POST.get("password")
         if email:
             user = LoginUserr.objects.filter(email=email).first()
-            print(user.email)
+            # print(user.email)
             if user:
                 ## 存在
                 if user.password == setPassword(password):
@@ -222,7 +223,7 @@ def AlipayViews(request):
     ##   发送支付请求
     ## 请求地址  支付网关 + 实例化订单
     result = "https://openapi.alipaydev.com/gateway.do?" + order_string
-    print(result)
+    # print(result)
     return HttpResponseRedirect(result)
 
 def payresult(request):
@@ -276,33 +277,33 @@ def place_order(request):
         user_address = i.user_address
     ## 保存订单
     goods_id = request.GET.get('goods_id')  # 商品id
-    print('goods_id*****',goods_id)
+    # print('goods_id*****',goods_id)
     goods_count = request.GET.get('goods_count')  ## 订单数量
-    print('goods_count***',goods_count)
+    # print('goods_count***',goods_count)
     user_id = request.COOKIES.get("userid")
     if goods_id and goods_count:
         goods_id = int(goods_id)
         goods_count = int(goods_count)
         goods = Goods.objects.get(id=goods_id)
-        print(goods.goods_price)
+        # print(goods.goods_price)
         ## 保存订单表
         payorder = PayOrder()
         order_number = str(time.time()).replace('.', '')  ## 生产订单编号
         payorder.order_number = order_number  ## 订单编号
         payorder.order_status = 0
         payorder.order_total = goods.goods_price * goods_count
-        print(payorder.order_total)
+        # print(payorder.order_total)
         payorder.order_user = LoginUserr.objects.get(id=user_id)
         payorder.save()
         ## 保存订单详情表
         orderinfo = OrderInfo()
         orderinfo.order_id = payorder
-        print('orderinfo.order_id',orderinfo.order_id)
+        # print('orderinfo.order_id',orderinfo.order_id)
         orderinfo.goods = goods
         orderinfo.goods_count = goods_count
         orderinfo.goods_price = goods.goods_price
         orderinfo.goods_total_price = goods.goods_price * goods_count
-        print('orderinfo.goods_total_price',orderinfo.goods_total_price)
+        # print('orderinfo.goods_total_price',orderinfo.goods_total_price)
         orderinfo.store_id = goods.goods_store
         orderinfo.save()
 
@@ -324,11 +325,11 @@ def place_order_more(request):
         user_phone = i.user_phone
         user_address = i.user_address
     userid=request.COOKIES.get('userid')
-    print('userid',userid)
+    # print('userid',userid)
     data_item=data.items()
     req_data=[]
     for key,val in data_item:
-        print(key,'************************',val)
+        # print(key,'************************',val)
         if key.startswith('goods'):
             # print('key****',key,'val****',val)
             # print('all*******',key.startswith('count_'))
